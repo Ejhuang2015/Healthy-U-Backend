@@ -1,3 +1,9 @@
+# Something about Macs...
+.DS_Store/
+
+# Personal Notes
+Instructions.md
+
 # Logs
 logs
 *.log
