@@ -1,15 +1,16 @@
 {
-  "name": "serve",
+  "name": "healthy-u-server",
   "version": "0.0.0",
   "private": true,
   "scripts": {},
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
-    "express-session": "^1.17.1",
+    "express-jwt": "^6.0.0",
+    "helmet": "^4.1.0",
+    "jwks-rsa": "^1.9.0",
     "mysql2": "^2.2.5",
-    "passport": "^0.4.1",
-    "passport-auth0": "^1.4.0",
     "sequelize": "^6.6.2"
   }
 }
