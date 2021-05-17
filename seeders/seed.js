@@ -4,14 +4,14 @@ let mongoose = require("mongoose");
 let db = require("../models");
 require('dotenv').config();
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/healthyu", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/HealthyU", {
   useNewUrlParser: true,
   useFindAndModify: false
 });
 
 // Seed
 // =============================================================
-let seed = [
+let habitTip = [
     {
         id: 1,
         body: "Tip number one"
@@ -25,8 +25,8 @@ let seed = [
 
 // Start seed
 // =============================================================
-db.HealthyU.deleteMany({})
-  .then(() => db.HealthyU.collection.insertMany(seed))
+db.HabitTips.deleteMany({})
+  .then(() => db.HabitTips.collection.insertMany(habitTip))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
