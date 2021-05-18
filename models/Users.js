@@ -6,12 +6,18 @@ const Schema = mongoose.Schema;
 
 // Model
 // =============================================================
-const tipSchema = new Schema(
+const userSchema = new Schema(
     {
         id: {
-            type: Number,
+            type: String,
         },
-        body: {
+        name: {
+            type: String,
+        },
+        email: {
+            type: String,
+        },
+        avatar: {
             type: String,
         },
     },
@@ -22,8 +28,8 @@ const tipSchema = new Schema(
     }
 );
 
-const HabitTips = mongoose.model("Habit", tipSchema);
+const Users = mongoose.model("User", userSchema);
 
 // Export
 // =============================================================
-module.exports = HabitTips;
+module.exports = Users;
