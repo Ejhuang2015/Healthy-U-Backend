@@ -4,9 +4,9 @@ const router = require('express').Router();
 const Users = require('../../models/Users');
 const { checkJwt } = require("../../utils/check-jwt");
 
-// Get (Read)
+// Create Data (Post)
 // =============================================================
-// User Information from Callback
+// Create user data from Auth0 and return message
 router.post("/callback", checkJwt, async (req, res, next) => {
    try {
       const user = req.body;
@@ -25,10 +25,11 @@ router.post("/callback", checkJwt, async (req, res, next) => {
       }
    } catch (err) {
       res.status(400).json(err);
-      console.log("err" + err);
    }
 });
 
+
+// TESTING STUFF
 // Non-auth route example
 router.get("/public-message", (req, res) => {
    const message = { message: "The API doesn't require an access token to share this message." };
@@ -40,6 +41,19 @@ router.get("/protected-message", checkJwt, (req, res) => {
    const message = { message: "The API successfully validated your access token. Edit" };
    res.status(200).send(message);
 });
- 
- module.exports = router;
+
+// Read Data (Get)
+// =============================================================
+router.get("/:id", checkJwt, async (req, res, next) => {
+   try {
+      const userData = await Users.findOne({ id: req.params.id });
+      res.status(200).send(userData);
+      console.log(userData);
+   } catch (err) {
+      res.status(400).json(err);
+      console.log(err);
+   }
+})
+
+module.exports = router;
  
