@@ -11,9 +11,9 @@ router.post("/callback", checkJwt, async (req, res, next) => {
    try {
       const user = req.body;
       const checkUserExist = await Users.find({ id: user.id });
-      
+
       if (checkUserExist && checkUserExist.length > 0) {
-         res.status(200).send({message: `Welcome back ${user.name}!`});
+         res.status(200).send({ message: `Welcome back ${user.name}!` });
       } else {
          const newUser = await Users.create({
             id: user.id,
@@ -21,7 +21,7 @@ router.post("/callback", checkJwt, async (req, res, next) => {
             email: user.email,
             avatar: user.avatar
          })
-         res.status(200).send({message: `Greetings ${user.name}, welcome to Healthy U!`});
+         res.status(200).send({ message: `Greetings ${user.name}, welcome to Healthy U!` });
       }
    } catch (err) {
       res.status(400).json(err);
@@ -48,12 +48,27 @@ router.get("/:id", checkJwt, async (req, res, next) => {
    try {
       const userData = await Users.findOne({ id: req.params.id });
       res.status(200).send(userData);
-      console.log(userData);
    } catch (err) {
       res.status(400).json(err);
-      console.log(err);
+   }
+})
+
+// Update Data (Put)
+// =============================================================
+router.put("/:id", checkJwt, async (req, res, next) => {
+   try {
+      await Users.updateOne(
+         { id: req.params.id },
+         { 
+            name: req.body.name,
+            email: req.body.email,
+            avatar: req.body.avatar,
+         }
+      )
+      res.status(200).send({ message: "Profile successfully updated" });
+   } catch (err) {
+      res.status(400).json(err);
    }
 })
 
 module.exports = router;
- 
