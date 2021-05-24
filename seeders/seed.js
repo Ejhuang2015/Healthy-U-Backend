@@ -11,6 +11,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/HealthyU", {
 
 // Seed
 // =============================================================
+// Health Tips
 let healthTip = [
   {
     id: 1,
@@ -202,6 +203,457 @@ let healthTip = [
   },
 ]
 
+// Meditation Quotes
+let meditationQuote = [
+  {
+    id: 1,
+    body: '“Between stimulus and response there is a space. In that space is our power to choose our response. In our response lies our growth and our freedom.” -Viktor E. Frankl',
+  },
+  {
+    id: 2,
+    body: '“Healing comes from letting there be room for everything: room for grief, for relief, for misery, for joy.” - Pema Chodron',
+  },
+  {
+    id: 3,
+    body: '“Stop all of your doing-ness, all of your thinking. Just be for a while. Even for only a moment. It can change everything.” - Neale D. Walsch',
+  },
+  {
+    id: 4,
+    body: '“All the elements for your happiness are already here. There’s no need to run, strive, search or struggle. Just be.” - Thich Nhat Hanh',
+  },
+  {
+    id: 5,
+    body: '“Attachment constrains our vision so that we are not able to see things from a wider perspective.” - Dalai Lama',
+  },
+  {
+    id: 6,
+    body: '“By letting it go it all gets done. The world is won by those who let it go. But when you try and try. The world is beyond the winning.” -Lao-Tzu',
+  },
+  {
+    id: 7,
+    body: '“The more and more you listen, the more and more you hear; the more and more you hear, the deeper and deeper your understanding becomes.” -Dudjom Rinpoche',
+  },
+  {
+    id: 8,
+    body: '“Let us always meet each other with smile, for the smile is the beginning of love.” - Mother Teresa',
+  },
+  {
+    id: 9,
+    body: '“If you want to be great, make others feel great.” - Ralph Marston',
+  },
+  {
+    id: 10,
+    body: '“Have patience. Wait until the mud settles and the water is clear.Remain unmoving until right action arises by itself.” -Lao Tzu',
+  },
+  {
+    id: 11,
+    body: '“Adopt the pace of nature: her secret is patience.” -Ralph Waldo Emerson',
+  },
+  {
+    id: 12,
+    body: '“Have patience with all things, But, first of all with yourself.” -Saint Francis de Sales',
+  },
+  {
+    id: 13,
+    body: '“Man is the only creature that refuses to be what he is.” -Albert Camus',
+  },
+  {
+    id: 14,
+    body: '“Where ignorance is our master, there is no possibility of real peace.” -Dalai Lama',
+  },
+  {
+    id: 15,
+    body: '“Constant effort and frequent mistakes are the stepping stones to genius.” -Elbert Hubbard',
+  },
+  {
+    id: 16,
+    body: '“Work joyfully and peacefully, knowing that right thoughts and right efforts will inevitably bring about right results.” -James Allen',
+  },
+  {
+    id: 17,
+    body: '“When we are no longer able to change a situation – we are challenged to change ourselves.” -Viktor E. Frankl',
+  },
+  {
+    id: 18,
+    body: '“Difficulties and obstacles, if properly understood and used, can turn out to be an unexpected source of strength.” -Sogyal Rinpoche',
+  },
+  {
+    id: 19,
+    body: '“The best way out is always through.” - Robert Frost',
+  },
+  {
+    id: 20,
+    body: '“Love is an act of endless forgiveness, a tender look which becomes a habit.” - Peter Ustinov',
+  },
+  {
+    id: 21,
+    body: '“There is no revenge so complete as forgiveness.” - Josh Billings',
+  },
+  {
+    id: 22,
+    body: '“Appreciate everything, even the ordinary. Especially the ordinary.” - Pema Chodron',
+  },
+  {
+    id: 23,
+    body: '“True happiness comes from the joy of deeds well done, the zest of creating things new.” - Antoine de Saint-Exupery',
+  },
+  {
+    id: 24,
+    body: '“Perfect happiness is the absence of striving for happiness.” - Chuang Tzu',
+  },
+  {
+    id: 25,
+    body: '“Discovering real goodness comes from appreciating very simple experiences.” – Chögyam Trungpa',
+  },
+  {
+    id: 26,
+    body: '“Appreciation is an excellent thing. It makes what is excellent in others belong to us, as well.” - Voltaire',
+  },
+  {
+    id: 27,
+    body: '“One action produces a reaction; that is karma.” -Lama Yeshe',
+  },
+  {
+    id: 28,
+    body: '“Today tell yourself every word I utter will be chosen consciously. I will refrain from complaints, criticism and condemnation.” - D. Chopra',
+  },
+  {
+    id: 29,
+    body: '“If you want peace, then let it be the peace of wisdom. That’s enough!”- Ajahn Chah',
+  },
+  {
+    id: 30,
+    body: '“If in our daily life we can smile, if we can be peaceful and happy, not only we, but everyone will profit from it.” - Thich Nhat Hanh',
+  },
+  {
+    id: 31,
+    body: '“Wherever you go, there you are.” - Jon Kabat-Zinn',
+  },
+  {
+    id: 32,
+    body: '“You can’t stop the waves but you can learn how to surf ” – Jon Kabat-Zinn',
+  },
+  {
+    id: 33,
+    body: '“When you’re feeling frazzled, put all of your attention on the breath. It’s a portal into the present moment, the best remedy for stress.” - Ellen Barrett',
+  },
+  {
+    id: 34,
+    body: '“Remember the blue sky. It may at times be obscured by clouds, but it is always there.” — Andy Puddicombe',
+  },
+  {
+    id: 35,
+    body: '“Worrying is stupid. It’s like walking around with an umbrella waiting for it to rain.” - Wiz Khalifa',
+  },
+  {
+    id: 36,
+    body: '“Nature does not hurry, yet everything is accomplished.” – Lao Tzu',
+  },
+  {
+    id: 37,
+    body: '“A mind is like a parachute. It doesn’t work if it isn’t open.” – Frank Zappa',
+  },
+  {
+    id: 38,
+    body: '“Slow down, you’ll get there faster.” — Katherine King',
+  },
+  {
+    id: 39,
+    body: '“Almost everything will work again if you unplug it for a few minutes … including you.” — Anne Lamott',
+  },
+  {
+    id: 40,
+    body: '“As soon as we wish to be happier, we are no longer happy.” – Walter Landor',
+  },
+  {
+    id: 41,
+    body: '“Looking at beauty in the world is the first step of purifying the mind.” – Amit Ray',
+  },
+  {
+    id: 42,
+    body: '“When we allow ourselves to embrace the moment, we allow ourselves to live.” — Lisa Bien',
+  },
+  {
+    id: 43,
+    body: '“Practicing a mindful moment in the middle of the day, helps to bring you back to center, reset, and move into the rest of your day with greater clarity and focus.” — Christine Agro',
+  },
+  {
+    id: 44,
+    body: '“Forever is composed of nows.” – Emily Dickinson',
+  },
+  {
+    id: 45,
+    body: '“Few of us ever live in the present. We are forever anticipating what is to come or remembering what has gone.” — Louis L’Amour',
+  },
+  {
+    id: 46,
+    body: '“The feeling that any task is a nuisance will soon disappear if it’s done in mindfulness.” – Thich Nhat Hanh',
+  },
+  {
+    id: 47,
+    body: '“Mindfulness gives you time. Time gives you choice. Choices, skillfully made, lead to freedom.” – Bhante Henepola Gunaratana',
+  },
+  {
+    id: 48,
+    body: '“When we get too caught up in the busyness of the world, we lose connection with one another—and ourselves.” — Jack Kornfield',
+  },
+  {
+    id: 49,
+    body: '“The mind is just like a muscle—the more you exercise it, the stronger it gets and the more it can expand.” — Idowu Koyenikan',
+  },
+]
+
+// Jokes
+let joke = [
+  {
+    id: 1,
+    question: "There’s a fine line between a numerator and a denominator.",
+    answer: "(…Only a fraction of people will get this clean joke.)"
+},
+{
+    id: 2,
+    question: "What do dentists call their x-rays?",
+    answer: "Tooth pics!"
+},
+{
+    id: 3,
+    question: "Did you hear about the first restaurant to open on the moon?",
+    answer: "It had great food, but no atmosphere."
+},
+{
+    id: 4,
+    question: "What did one ocean say to the other ocean?",
+    answer: "Nothing, it just waved."
+},
+{
+    id: 5,
+    question: "Do you want to hear a construction joke?",
+    answer: "Sorry, I’m still working on it."
+},
+{
+    id: 6,
+    question: "Did you hear about the fire at the circus?",
+    answer: "It was in tents!"
+},
+{
+    id: 7,
+    question: "Why do ducks have feathers?",
+    answer: "To cover their butt quacks!"
+},
+{
+    id: 8,
+    question: "What’s the difference between a hippo and a zippo?",
+    answer: "One is really heavy and the other’s a little lighter."
+},
+{
+    id: 9,
+    question: "What does a nosey pepper do?",
+    answer: "It gets jalapeño business."
+},
+{
+    id: 10,
+    question: "Why should you never trust stairs?",
+    answer: "They’re always up to something."
+},
+{
+    id: 11,
+    question: "When does a joke become a ‘dad’ joke?",
+    answer: "When it becomes apparent."
+},
+{
+    id: 12,
+    question: "Why did the bullet end up losing his job?",
+    answer: "He got fired."
+},
+{
+    id: 13,
+    question: "What kind of shorts do clouds wear?",
+    answer: "Thunderpants"
+},
+{
+    id: 14,
+    question: "I entered ten puns in a contest to see which would win.",
+    answer: "No pun in ten did."
+},
+{
+    id: 15,
+    question: "How do you measure a snake?",
+    answer: "In inches—they don’t have feet."
+},
+{
+    id: 16,
+    question: "Where does a waitress with only one leg work?",
+    answer: "IHOP."
+},
+{
+    id: 17,
+    question: "What does a house wear?",
+    answer: "Address!"
+},
+{
+    id: 18,
+    question: "Why are toilets always so good at poker?",
+    answer: "They always get a flush"
+},
+{
+    id: 19,
+    question: "Why is Peter Pan always flying?",
+    answer: "Because he Neverlands. (I love this joke because it never grows old.)"
+},
+{
+    id: 20,
+    question: "You heard the rumor going around about butter?",
+    answer: "Never mind, I shouldn’t spread it."
+},
+{
+    id: 21,
+    question: "Two windmills are standing on a wind farm. One asks, ‘What’s your favorite kind of music?’",
+    answer: "The other replies, ‘I’m a big metal fan.’"
+},
+{
+    id: 22,
+    question: "The first rule of the Alzheimer’s club is…",
+    answer: "Wait, where are we again?"
+},
+{
+    id: 23,
+    question: "I took the shell off of my racing snail, thinking it would make him faster.",
+    answer: "But if anything, it made him more sluggish."
+},
+{
+    id: 24,
+    question: "What do you get from a pampered cow?",
+    answer: "Spoiled milk."
+},
+{
+    id: 25,
+    question: "How does NASA organize a party?",
+    answer: "They planet."
+},
+{
+    id: 26,
+    question: "What’s the best thing about Switzerland?",
+    answer: "I don’t know, but the flag is a big plus."
+},
+{
+    id: 27.,
+    question: "You know, it was so cold in D.C. the other day, ",
+    answer: "I saw a politician with his hands in his own pockets."
+},
+{
+    id: 28,
+    question: "How many tickles does it take to get an octopus to laugh?",
+    answer: "Ten tickles"
+},
+{
+    id: 29,
+    question: "Why doesn’t Dracula have any friends?",
+    answer: "Well, honestly, he’s a real pain in the neck."
+},
+{
+    id: 30,
+    question: "My teachers told me I’d never amount to much since I procrastinate so much.",
+    answer: "I told them, “Just you wait!”"
+},
+{
+    id: 31,
+    question: "Why were they called the “dark ages?”",
+    answer: "Because there were a lot of knights."
+},
+{
+    id: 32,
+    question: "What gets wetter the more it dries?",
+    answer: "A towel."
+},
+{
+    id: 33,
+    question: "Why aren’t koalas considered bears?",
+    answer: "They don’t have the right koala-fications."
+},
+{
+    id: 34,
+    question: "How does a farmer mend his overalls?",
+    answer: "With cabbage patches."
+},
+{
+    id: 35,
+    question: "Want to hear a joke about a roof?",
+    answer: "The first one’s on the house."
+},
+{
+    id: 36,
+    question: "What’s a pirate’s favorite letter?",
+    answer: "You probably think it’s “R” but it be the “C”."
+},
+{
+    id: 37,
+    question: "How much teddy bears never want to eat anything?",
+    answer: "Because they’re always stuffed."
+},
+{
+    id: 38,
+    question: "Did you hear about the cheese factory that exploded in France?",
+    answer: "There was nothing left but de Brie."
+},
+{
+    id: 39,
+    question: "Where should you go in the room if you’re feeling cold?",
+    answer: "The corner—they’re usually 90 degrees."
+},
+{
+    id: 40,
+    question: "I can never take my dog to the park because the ducks keep trying to bite him.",
+    answer: "I guess that’s what I get for buying a pure bread dog."
+},
+{
+    id: 41,
+    question: "What’s the difference between a poorly dressed man on a unicycle and a well-dressed man on a bicycle?",
+    answer: "Attire."
+},
+{
+    id: 42,
+    question: "What did the Buddhist ask the hot dog vendor?",
+    answer: "“Make me one with everything.”"
+},
+{
+    id: 43,
+    question: "You know why you never see elephants hiding up in trees?",
+    answer: "Because they’re really good at it."
+},
+{
+    id: 44,
+    question: "A horse walks into a bar.",
+    answer: "The bartender says, “Why the long face?”"
+},
+{
+    id: 45,
+    question: "How did the hipster burn his mouth?",
+    answer: "He ate his pizza before it was cool."
+},
+{
+    id: 46,
+    question: "What do you get when you cross a dyslexic, an insomniac, and an agnostic?",
+    answer: "Someone who lays awake at night wondering if there’s a dog."
+},
+{
+    id: 47,
+    question: "As a scarecrow, people say I’m outstanding in my field.",
+    answer: "But hay, it’s in my jeans."
+},
+{
+    id: 48,
+    question: "What should you do if you’re attacked by a group of clowns?",
+    answer: "Go straight for the juggler."
+},
+{
+    id: 49,
+    question: "I’ve been thinking about taking up meditation.",
+    answer: "I figure it’s better than sitting around doing nothing."
+},
+
+]
+
+// Users
 let user = [
   {
     id: "test-id-1",
@@ -219,6 +671,23 @@ db.HealthTips.deleteMany({})
   .then(() => db.HealthTips.collection.insertMany(healthTip))
   .then(data => {
     console.log(data.result.n + " habit tip records inserted!");
+  }).catch(err => {
+    console.error(err);
+  });
+// Seed Meditation Quotes
+db.MeditationQuotes.deleteMany({})
+  .then(() => db.MeditationQuotes.collection.insertMany(meditationQuote))
+  .then(data => {
+    console.log(data.result.n + " meditation quote records inserted!");
+  }).catch(err => {
+    console.error(err);
+  });
+
+// Seed Jokes
+db.Jokes.deleteMany({})
+  .then(() => db.Jokes.collection.insertMany(joke))
+  .then(data => {
+    console.log(data.result.n + " joke records inserted!");
   }).catch(err => {
     console.error(err);
   });
