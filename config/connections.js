@@ -1,28 +1,19 @@
-const Sequelize = require('sequelize');
+// Dependencies
+// =============================================================
 require('dotenv').config();
 
-let sequelize;
-
-if (process.env.JAWSDB_URL) {
-  sequelize = new Sequelize(process.env.JAWSDB_URL);
-} else {
-  sequelize = new Sequelize(
-    process.env.DB_NAME,
-    process.env.DB_USER,
-    process.env.DB_PASSWORD,
-    {
-      host: 'localhost',
-      dialect: 'mysql',
-      port: 3306
-    }
-  );
-}
-
+// Variables
+// =============================================================
 const audience = process.env.AUTH0_AUDIENCE;
 const domain = process.env.AUTH0_DOMAIN;
 const serverPort = process.env.SERVER_PORT;
 const clientOriginUrl = process.env.CLIENT_ORIGIN_URL;
+const S3_ID = process.env.S3_ID;
+const S3_SECRET = process.env.S3_SECRET;
+const S3_BUCKET_NAME = process.env.S3_BUCKET_NAME;
 
+// Fallback
+// =============================================================
 if (!audience) {
   throw new Error(
     ".env is missing the definition of an AUTH0_AUDIENCE environmental variable",
@@ -49,11 +40,15 @@ if (!clientOriginUrl) {
 
 const clientOrigins = ["http://localhost:4040"];
 
+// Exports
+// =============================================================
 module.exports = {
-  sequelize,
   audience,
   domain,
   serverPort,
   clientOriginUrl,
   clientOrigins,
+  S3_ID, 
+  S3_SECRET, 
+  S3_BUCKET_NAME,
 };

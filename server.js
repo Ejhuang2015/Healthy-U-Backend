@@ -5,7 +5,8 @@ const express = require('express');
 const routes = require('./routes');
 const cors = require("cors");
 const helmet = require("helmet");
-const { clientOrigins, serverPort, sequelize } = require("./config/connections");
+const mongoose = require("mongoose");
+const { clientOrigins, serverPort } = require("./config/connections");
 
 // App Variables
 // =============================================================
@@ -21,13 +22,20 @@ app.use(express.static(path.join(__dirname, '/public')));
 
 app.use(routes);
 
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/HabitTips", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+});
+
 app.use(function (err, req, res, next) {
-    console.log(err);
-    res.status(500).send(err.message);
+  console.log(err);
+  res.status(500).send(err.message);
 });
 
 // Start
 // =============================================================
-sequelize.sync({ force: false }).then(() => {
-    app.listen(serverPort, () => console.log(`API Server listening on port ${serverPort}`));
-});
+app.listen(serverPort, () =>
+  console.log(`API Server listening on port ${serverPort}`)
+);
