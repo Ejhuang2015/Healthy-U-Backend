@@ -1,6 +1,6 @@
 // Export
 // =============================================================
 module.exports = {
-    HabitTips: require("./HabitTips"),
+    HealthTips: require("./HealthTips"),
     Users: require("./Users")
 };

@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 
 // Model
 // =============================================================
-const tipSchema = new Schema(
+const healthTipSchema = new Schema(
     {
         id: {
             type: Number,
@@ -22,8 +22,8 @@ const tipSchema = new Schema(
     }
 );
 
-const HabitTips = mongoose.model("Habit", tipSchema);
+const HealthTips = mongoose.model("Habit", healthTipSchema);
 
 // Export
 // =============================================================
-module.exports = HabitTips;
+module.exports = HealthTips;

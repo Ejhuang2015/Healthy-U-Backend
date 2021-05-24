@@ -11,10 +11,10 @@ const { upload } = require("../../utils/upload");
 router.post("/callback", checkJwt, async (req, res, next) => {
    try {
       const user = req.body;
-      const checkUserExist = await Users.find({ id: user.id });
+      const existingUser = await Users.find({ id: user.id });
 
-      if (checkUserExist && checkUserExist.length > 0) {
-         res.status(200).send({ message: `Welcome back ${user.name}!` });
+      if (existingUser && existingUser.length > 0) {
+         res.status(200).send({ message: `Welcome back ${existingUser[0].name}!` });
       } else {
          const newUser = await Users.create({
             id: user.id,
@@ -27,20 +27,6 @@ router.post("/callback", checkJwt, async (req, res, next) => {
    } catch (err) {
       res.status(400).json(err);
    }
-});
-
-
-// TESTING STUFF
-// Non-auth route example
-router.get("/public-message", (req, res) => {
-   const message = { message: "The API doesn't require an access token to share this message." };
-   res.status(200).send(message);
-});
-
-// Auth required example
-router.get("/protected-message", checkJwt, (req, res) => {
-   const message = { message: "The API successfully validated your access token. Edit" };
-   res.status(200).send(message);
 });
 
 // Read Data (Get)
@@ -72,7 +58,6 @@ router.put("/:id", upload.single('avatar'), async (req, res, next) => {
    }
 })
 
+// Export
+// =============================================================
 module.exports = router;
-
-
-// Notes: When user clicks submit, the image is taken and buffered via multer. Take that image and upload it to the aws s3. Grab the url from s3 and save the url as the new avatar. Update the model as normal.
