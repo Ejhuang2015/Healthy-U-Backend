@@ -1,37 +1,48 @@
 // Dependencies
 // =============================================================
 const AWS = require('aws-sdk');
-const fs = require('fs');
-require('dotenv').config();
+const multer = require('multer');
+const multerS3 = require("multer-s3");
+const { S3_ID, S3_SECRET, S3_BUCKET_NAME } = require("../config/connections");
 
-// Variables
-// =============================================================
-const ID = process.env.S3_ID;
-const SECRET = process.env.S3_SECRET;
-const BUCKET_NAME = process.env.S3_BUCKET_NAME;
 
 // Initialize
 // =============================================================
 const s3 = new AWS.S3({
-    accessKeyId: ID,
-    secretAccessKey: SECRET
+    accessKeyId: S3_ID,
+    secretAccessKey: S3_SECRET,
+    region: "us-east-2"
 })
+
+// Filter Function
+// =============================================================
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
+        cb(null, true);
+    } else {
+        cb(new Error("Invalid file type, only JPEG and PNG is allowed!"), false);
+    }
+};
 
 // Upload Function
 // =============================================================
-const uploadFile = (fileName) => {
-    const fileContent = fs.readFileSync(fileName);
+const upload = multer({
+    fileFilter,
+    storage: multerS3({
+        acl: "public-read",
+        s3,
+        bucket: S3_BUCKET_NAME,
+        metadata: function (req, file, cb) {
+            cb(null, Object.assign({}, req.body));
+        },
+        key: function (req, file, cb) {
+            cb(null, req.params.id);
+        },
+    }),
+});
 
-    const params = {
-        Bucket: BUCKET_NAME,
-        Key: fileName,
-        Body: fileContent
-    };
-
-    s3.upload(params, function(err, data) {
-        if (err) {
-            throw err;
-        }
-        console.log(`File uploaded successfully. ${data.location}`);
-    });
-}
+// Exports
+// =============================================================
+module.exports = {
+    upload,
+};

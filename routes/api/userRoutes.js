@@ -3,6 +3,7 @@
 const router = require('express').Router();
 const Users = require('../../models/Users');
 const { checkJwt } = require("../../utils/check-jwt");
+const { upload } = require("../../utils/upload");
 
 // Create Data (Post)
 // =============================================================
@@ -55,14 +56,14 @@ router.get("/:id", checkJwt, async (req, res, next) => {
 
 // Update Data (Put)
 // =============================================================
-router.put("/:id", checkJwt, async (req, res, next) => {
+router.put("/:id", upload.single('avatar'), async (req, res, next) => {
    try {
       await Users.updateOne(
          { id: req.params.id },
          { 
             name: req.body.name,
             email: req.body.email,
-            avatar: req.body.avatar,
+            avatar: req.file.location,
          }
       )
       res.status(200).send({ message: "Profile successfully updated" });
@@ -72,3 +73,6 @@ router.put("/:id", checkJwt, async (req, res, next) => {
 })
 
 module.exports = router;
+
+
+// Notes: When user clicks submit, the image is taken and buffered via multer. Take that image and upload it to the aws s3. Grab the url from s3 and save the url as the new avatar. Update the model as normal.

@@ -6,7 +6,7 @@ const routes = require('./routes');
 const cors = require("cors");
 const helmet = require("helmet");
 const mongoose = require("mongoose");
-const { clientOrigins, serverPort, sequelize } = require("./config/connections");
+const { clientOrigins, serverPort } = require("./config/connections");
 
 // App Variables
 // =============================================================

@@ -8,8 +8,11 @@ const audience = process.env.AUTH0_AUDIENCE;
 const domain = process.env.AUTH0_DOMAIN;
 const serverPort = process.env.SERVER_PORT;
 const clientOriginUrl = process.env.CLIENT_ORIGIN_URL;
+const S3_ID = process.env.S3_ID;
+const S3_SECRET = process.env.S3_SECRET;
+const S3_BUCKET_NAME = process.env.S3_BUCKET_NAME;
 
-// Initialize
+// Fallback
 // =============================================================
 if (!audience) {
   throw new Error(
@@ -45,4 +48,7 @@ module.exports = {
   serverPort,
   clientOriginUrl,
   clientOrigins,
+  S3_ID, 
+  S3_SECRET, 
+  S3_BUCKET_NAME,
 };
