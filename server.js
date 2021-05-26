@@ -11,6 +11,7 @@ const { clientOrigins, serverPort } = require("./config/connections");
 // App Variables
 // =============================================================
 const app = express();
+const PORT = serverPort || 6060;
 
 // App Config
 // =============================================================
@@ -36,6 +37,6 @@ app.use(function (err, req, res, next) {
 
 // Start
 // =============================================================
-app.listen(serverPort, () =>
-  console.log(`API Server listening on port ${serverPort}`)
+app.listen(PORT, () =>
+  console.log(`API Server listening on port ${PORT}`)
 );
