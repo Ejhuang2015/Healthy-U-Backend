@@ -6,12 +6,12 @@ const routes = require('./routes');
 const cors = require("cors");
 const helmet = require("helmet");
 const mongoose = require("mongoose");
-const { clientOrigins, serverPort } = require("./config/connections");
+const { clientOrigins } = require("./config/connections");
 
 // App Variables
 // =============================================================
 const app = express();
-const PORT = serverPort || 6060;
+const PORT = process.env.PORT || 6060;
 
 // App Config
 // =============================================================
