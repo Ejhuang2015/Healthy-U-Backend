@@ -6,7 +6,6 @@ require('dotenv').config();
 // =============================================================
 const audience = process.env.AUTH0_AUDIENCE;
 const domain = process.env.AUTH0_DOMAIN;
-const serverPort = process.env.SERVER_PORT;
 const clientOriginUrl = process.env.CLIENT_ORIGIN_URL;
 const S3_ID = process.env.S3_ID;
 const S3_SECRET = process.env.S3_SECRET;
@@ -23,12 +22,6 @@ if (!audience) {
 if (!domain) {
   throw new Error(
     ".env is missing the definition of an AUTH0_DOMAIN environmental variable",
-  );
-}
-
-if (!serverPort) {
-  throw new Error(
-    ".env is missing the definition of a API_PORT environmental variable",
   );
 }
 
