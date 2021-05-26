@@ -38,7 +38,6 @@ const clientOrigins = ["http://localhost:4040"];
 module.exports = {
   audience,
   domain,
-  serverPort,
   clientOriginUrl,
   clientOrigins,
   S3_ID, 
