@@ -20,11 +20,6 @@ const userSchema = new Schema(
         avatar: {
             type: String,
         },
-    },
-    {
-        toJSON: {
-            virtuals: true,
-        },
     }
 );
 

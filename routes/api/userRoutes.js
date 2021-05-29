@@ -44,12 +44,13 @@ router.get("/:id", checkJwt, async (req, res, next) => {
 // =============================================================
 router.put("/:id", upload.single('avatar'), async (req, res, next) => {
    try {
+      const userAvatar = (req.file && req.file.location) ? req.file.location : req.body.avatar;
       await Users.updateOne(
          { id: req.params.id },
          { 
             name: req.body.name,
             email: req.body.email,
-            avatar: req.file.location,
+            avatar: userAvatar,
          }
       )
       res.status(200).send({ message: "Profile successfully updated" });

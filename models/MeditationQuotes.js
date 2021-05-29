@@ -14,11 +14,6 @@ const meditationQuoteSchema = new Schema(
         body: {
             type: String,
         },
-    },
-    {
-        toJSON: {
-            virtuals: true,
-        },
     }
 );
 

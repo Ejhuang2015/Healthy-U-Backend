@@ -17,11 +17,6 @@ const jokeSchema = new Schema(
         answer: {
             type: String,
         },
-    },
-    {
-        toJSON: {
-            virtuals: true,
-        },
     }
 );
 

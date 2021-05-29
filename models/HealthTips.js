@@ -14,11 +14,6 @@ const healthTipSchema = new Schema(
         body: {
             type: String,
         },
-    },
-    {
-        toJSON: {
-            virtuals: true,
-        },
     }
 );
 
