@@ -6,30 +6,20 @@ const { checkJwt } = require("../../utils/check-jwt");
 
 // Create Data (Post)
 // =============================================================
-router.post("/", checkJwt, async (req, res, next) => {
+router.post("/:userID", checkJwt, async (req, res, next) => {
     try {
-        // Get user's latest recorded goal
-        const userID = req.body.id;
-        const latestGoal = await DailyGoals.findOne({ id: userID }).sort({ x:1 });
+        const userID = req.params.userID;
         // Get today's date
         const today = new Date(new Date().setHours(0, 0, 0, 0));
 
-        // Check if latest goal is earlier than today...
-        if (latestGoal.date < today) {
-            const newGoal = await DailyGoals.create({
-                user: userID,
-                date: today,
-                water: 0,
-                food: 0,
-                sin: 0,
-            })
-            res.status(200).send({ message: `Welcome to a new day!` });
-            // ...Else GET toda's goal
-        } else {
-            const latestGoal = await DailyGoals.findOne({ id: req.params.userID }).sort({ x: 1 });
-            console.log(latestGoal);
-            res.status(200).send(latestGoal);
-        }
+        const newGoal = await DailyGoals.create({
+            user: userID,
+            date: today,
+            water: 0,
+            food: 0,
+            bad: 0,
+        });
+        res.status(200).send(newGoal);
     } catch (err) {
         res.status(400).json(err);
     }
@@ -39,9 +29,12 @@ router.post("/", checkJwt, async (req, res, next) => {
 // =============================================================
 router.get("/:userID", checkJwt, async (req, res, next) => {
     try {
-        const latestGoal = await DailyGoals.findOne({ id: req.params.userID }).sort({ x: 1 });
-        console.log(latestGoal);
-        res.status(200).send(latestGoal);
+        const latestGoal = await DailyGoals.findOne({ user: req.params.userID }).sort({ x: 1 });
+        if (!latestGoal) {
+            res.status(200).send(false);
+        } else {
+            res.status(200).send(latestGoal);
+        }
     } catch (err) {
         res.status(400).json(err);
     }
@@ -49,6 +42,19 @@ router.get("/:userID", checkJwt, async (req, res, next) => {
 
 // Update Data (Put)
 // =============================================================
+router.put("/:userID", checkJwt, async (req, res, next) => {
+    try {
+        const key = req.body.key;
+        const value = req.body.value;
+        const currentGoal = await DailyGoals.updateOne(
+            { user: req.params.userID },
+            { [key]: value }
+        ).sort({ date: -1 });
+        res.status(200).send(currentGoal);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+})
 
 // Export
 // =============================================================

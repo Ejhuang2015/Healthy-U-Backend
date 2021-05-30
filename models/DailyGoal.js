@@ -17,12 +17,11 @@ const goalSchema = new Schema(
         },
         water: {
             type: Number,
-            default: 0,
         },
         food: {
             type: Number,
         },
-        sin: {
+        bad: {
             type: Number,
         },
     },
