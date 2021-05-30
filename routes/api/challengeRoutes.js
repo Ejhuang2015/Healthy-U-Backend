@@ -10,12 +10,10 @@ router.post("/:userID", checkJwt, async (req, res, next) => {
     try {
         // 49 days array
         const daysArr = [];
-        // Today's date without time
-        const today = new Date(new Date().setHours(0, 0, 0, 0))
         // Loop 49 times 
         for (i=0; i < 49; i++) {
             // Get today's date + i days
-            const nextDate = new Date(today);
+            const nextDate = new Date(req.body.date);
             nextDate.setDate(nextDate.getDate() + i);
             const dayObj = {
                 day: i+1,
@@ -28,7 +26,7 @@ router.post("/:userID", checkJwt, async (req, res, next) => {
         // Create new challenge
         await Challenges.create({
             user: req.params.userID,
-            date: today,
+            date: req.body.date,
             title: req.body.title,
             desc: req.body.desc,
             days: daysArr,
@@ -40,24 +38,13 @@ router.post("/:userID", checkJwt, async (req, res, next) => {
     }
 });
 
-// Read Data (Get)
-// =============================================================
-// Get latest Challenge
-router.get("/:userID", checkJwt, async (req, res, next) => {
-    try {
-        const latestChallenge = await Challenges.findOne({ user: req.params.userID }).sort({ date: -1 });
-        res.status(200).send(latestChallenge);
-    } catch (err) {
-        res.status(400).json(err);
-    }
-})
 // Check if challenge is over
-router.get("/finished/:userID", checkJwt, async (req, res, next) => {
+router.post("/finished/:userID", checkJwt, async (req, res, next) => {
     try {
         // Get the latest challenge
         const latestChallenge = await Challenges.findOne({ user: req.params.userID }).sort({ date: -1 });
         // Get today's date
-        const today = new Date(new Date().setHours(0, 0, 0, 0));
+        const today = req.body.date;
         // Check if user has challenge
         if (latestChallenge){
             // Return true if latest challenge is older than 49 days...
@@ -76,10 +63,22 @@ router.get("/finished/:userID", checkJwt, async (req, res, next) => {
     }
 })
 
+// Read Data (Get)
+// =============================================================
+// Get latest Challenge
+router.get("/:userID", checkJwt, async (req, res, next) => {
+    try {
+        const latestChallenge = await Challenges.findOne({ user: req.params.userID }).sort({ date: -1 });
+        res.status(200).send(latestChallenge);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+})
+
 // Update Data (Put)
 // =============================================================
 router.put("/:userID", checkJwt, async (req, res, next) => {
-    const today = new Date(new Date().setHours(0, 0, 0, 0))
+    const today = req.body.date;
     try {
         // Update current tile
         const currentTile = await Challenges.updateOne(

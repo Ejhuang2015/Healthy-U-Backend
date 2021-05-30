@@ -9,12 +9,10 @@ const { checkJwt } = require("../../utils/check-jwt");
 router.post("/:userID", checkJwt, async (req, res, next) => {
     try {
         const userID = req.params.userID;
-        // Get today's date
-        const today = new Date(new Date().setHours(0, 0, 0, 0));
 
         const newGoal = await DailyGoals.create({
             user: userID,
-            date: today,
+            date: req.body.date,
             water: 0,
             food: 0,
             bad: 0,
