@@ -27,7 +27,7 @@ router.post("/:userID", checkJwt, async (req, res, next) => {
 // =============================================================
 router.get("/:userID", checkJwt, async (req, res, next) => {
     try {
-        const latestGoal = await DailyGoals.findOne({ user: req.params.userID }).sort({ x: 1 });
+        const latestGoal = await DailyGoals.findOne({ user: req.params.userID }).sort({ x: -1 });
         if (!latestGoal) {
             res.status(200).send(false);
         } else {
