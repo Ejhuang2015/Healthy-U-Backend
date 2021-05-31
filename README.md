@@ -1,55 +1,35 @@
-# Healthy-U
-![License](https://img.shields.io/badge/license-MIT-blue.svg) 
+# Healthy U
+![GNU License](https://img.shields.io/badge/License-GNU-blue)
 
-Check it out [here](LINK)!
+This is the Back-End repository for the Healthy-U project. This server is made with Express and MongoDB and utilizes authentication via Auth0.
+Link the the Front-End repository here: [https://github.com/Ejhuang2015/Healthy-U-Frontend](https://github.com/Ejhuang2015/Healthy-U-Frontend). 
 
-Description
+## Table of Contents
+* [Installation](#installation)
+* [Usage](#usage)
+* [Contributors](#contributors)
+* [Questions](#questions)
+* [License](#license)
+# Installation
+Download the resository and install the necessary dependencies. After the installation is finished, run the server with "node start"
+# Usage
+Go to the [Front-End repository](https://github.com/Ejhuang2015/Healthy-U-Frontend) for this project to learn how to use this application!
+# Contributors
+Created by-
+* [Brain Jenkins](https://github.com/bjenkins63)
+* [Matt Romano](https://github.com/MRomano84)
+* [Edward Huang](https://github.com/Ejhuang2015)
+* [Wanda Gleason](https://github.com/wmgleason)
 
-## Project Overview
+Thanks to the following people who have contributed to this project:
+* [Scott Byer](https://github.com/switch120) 
+* [Mike Fearly](https://michaelfearnley.com/)
+* UNH Full Stack Development Bootcamp
 
+# Questions
+You can find me at my [github page here](https://github.com/ejhuang2015).
+Any comments, questions, or concerns? Email me  at ejhuang.2015@gmail.com.
 
-
-# View Demo  
-
-
-To view demo click on this link: ([LINK](LINK))
-
-# Getting Started   
-
-- First clone this repo ([GIT](https://github.com/Ejhuang2015/Healthy-U)).
-- Install Node.js on your device ([Download](https://nodejs.org/en/)).
-- Run `npm install` at the command line to install all required dependencies from package.json.
-FURTHER INSTRUCTIONS
-
-
-# Code Overview
-
-## Dependencies
-
-- [express](https://www.npmjs.com/package/express) 
-- [dotenv](https://www.npmjs.com/package/dotenv) 
-- [mysql](https://www.npmjs.com/package/mysql) 
-- [bcrypt](https://www.npmjs.com/package/bcrypt)
-- [sequelize](https://www.npmjs.com/package/sequelize)
-
-## Dev Dependencies
-- [eslint](https://www.npmjs.com/package/eslint)
-- [nodemon](https://www.npmjs.com/package/nodemon) 
-
-## Application MVC Structure
-
-- `server.js` - The entry point to our application for the customer user type.
-- `routes.js` - Entry point for the applications routes.
-- `/views` - Applications template files using handlebars.
-- `/routes` - The routes of this application.
-- `/public` - All public facing assets are in this directory.
-- `/models` - The application models for use with ORM.
-- `/db` - Starter database files.
-- `/controllers` - Most of the application's logic for requests and responses are done in this directory. 
-- `/config` - Database configuration. 
-
-## Contributors
-- [Brain Jenkins](https://github.com/bjenkins63)
-- [Matt Romano](https://github.com/MRomano84)
-- [Edward Huang](https://github.com/Ejhuang2015)
-- [Wanda Gleason](https://github.com/wmgleason)
+# License
+### Copyright (c) [2021] [ejhuang2015]
+View the license in [license.txt](./license.txt)
