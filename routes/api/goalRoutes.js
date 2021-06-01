@@ -27,10 +27,11 @@ router.post("/:userID", checkJwt, async (req, res, next) => {
 // =============================================================
 router.get("/:userID", checkJwt, async (req, res, next) => {
     try {
-        const latestGoal = await DailyGoals.findOne({ user: req.params.userID }).sort({ date: -1 });
+        const latestGoal = await DailyGoals.findOne({ user: req.params.userID }).sort({ date: 'desc' });
         if (!latestGoal) {
             res.status(200).send(false);
         } else {
+            console.log(latestGoal);
             res.status(200).send(latestGoal);
         }
     } catch (err) {
@@ -40,14 +41,14 @@ router.get("/:userID", checkJwt, async (req, res, next) => {
 
 // Update Data (Put)
 // =============================================================
-router.put("/:userID", checkJwt, async (req, res, next) => {
+router.put("/:goalID", checkJwt, async (req, res, next) => {
     try {
         const key = req.body.key;
         const value = req.body.value;
         const currentGoal = await DailyGoals.updateOne(
-            { user: req.params.userID },
+            { _id: req.params.goalID },
             { [key]: value }
-        ).sort({ date: -1 });
+        );
         res.status(200).send(currentGoal);
     } catch (err) {
         res.status(400).json(err);

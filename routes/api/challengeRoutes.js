@@ -42,7 +42,7 @@ router.post("/:userID", checkJwt, async (req, res, next) => {
 router.post("/finished/:userID", checkJwt, async (req, res, next) => {
     try {
         // Get the latest challenge
-        const latestChallenge = await Challenges.findOne({ user: req.params.userID }).sort({ date: -1 });
+        const latestChallenge = await Challenges.findOne({ user: req.params.userID }).sort({ date: "desc" });
         // Get today's date
         const today = req.body.date;
         // Check if user has challenge
@@ -68,7 +68,7 @@ router.post("/finished/:userID", checkJwt, async (req, res, next) => {
 // Get latest Challenge
 router.get("/:userID", checkJwt, async (req, res, next) => {
     try {
-        const latestChallenge = await Challenges.findOne({ user: req.params.userID }).sort({ date: -1 });
+        const latestChallenge = await Challenges.findOne({ user: req.params.userID }).sort({ date: "desc" });
         res.status(200).send(latestChallenge);
     } catch (err) {
         res.status(400).json(err);
@@ -86,7 +86,7 @@ router.put("/:userID", checkJwt, async (req, res, next) => {
             {
                 "$set": {"days.$.finish": req.body.finish}
             }
-        ).sort({ date: -1 });
+        ).sort({ date: 'desc' });
         res.status(200).send(currentTile);
     } catch (err) {
         res.status(400).json(err);
