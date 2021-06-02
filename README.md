@@ -11,7 +11,7 @@ Link the the Front-End repository here: [https://github.com/Ejhuang2015/Healthy-
 * [Questions](#questions)
 * [License](#license)
 # Installation
-Download the resository and install the necessary dependencies. After the installation is finished, run the server with "node start"
+Download the repository and install the necessary dependencies. After the installation is finished, run the server with "node start"
 # Usage
 Go to the [Front-End repository](https://github.com/Ejhuang2015/Healthy-U-Frontend) for this project to learn how to use this application!
 # Contributors
