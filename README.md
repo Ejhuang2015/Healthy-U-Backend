@@ -15,13 +15,10 @@ Download the repository and install the necessary dependencies. After the instal
 # Usage
 Go to the [Front-End repository](https://github.com/Ejhuang2015/Healthy-U-Frontend) for this project to learn how to use this application!
 # Contributors
-Created by-
+Thanks to the following people who have contributed to this project:
 * [Brain Jenkins](https://github.com/bjenkins63)
 * [Matt Romano](https://github.com/MRomano84)
-* [Edward Huang](https://github.com/Ejhuang2015)
 * [Wanda Gleason](https://github.com/wmgleason)
-
-Thanks to the following people who have contributed to this project:
 * [Scott Byer](https://github.com/switch120) 
 * [Mike Fearly](https://michaelfearnley.com/)
 * UNH Full Stack Development Bootcamp
