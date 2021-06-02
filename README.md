@@ -1,7 +1,7 @@
 # Healthy U
 ![GNU License](https://img.shields.io/badge/License-GNU-blue)
 
-This is the Back-End repository for the Healthy-U project. This server is made with Express and MongoDB and utilizes authentication via Auth0.
+This is the Back-End repository for the Healthy-U project. This server is made with Express and MongoDB and utilizes authentication via Auth0 and file storage via multer and aws S3.
 Link the the Front-End repository here: [https://github.com/Ejhuang2015/Healthy-U-Frontend](https://github.com/Ejhuang2015/Healthy-U-Frontend). 
 
 ## Table of Contents
